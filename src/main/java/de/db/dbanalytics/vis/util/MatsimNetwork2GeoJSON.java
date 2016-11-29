@@ -38,7 +38,7 @@ import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.api.core.v01.network.Network;
 import org.matsim.core.config.ConfigUtils;
-import org.matsim.core.network.NetworkReaderMatsimV1;
+import org.matsim.core.network.io.NetworkReaderMatsimV1;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.collections.Tuple;
 import org.matsim.core.utils.geometry.CoordinateTransformation;
@@ -69,7 +69,7 @@ public class MatsimNetwork2GeoJSON {
         Scenario scenario = ScenarioUtils.createScenario(ConfigUtils.createConfig());
         CoordinateTransformation transform = TransformationFactory.getCoordinateTransformation("EPSG:" + crsId, TransformationFactory.WGS84);
         NetworkReaderMatsimV1 reader = new NetworkReaderMatsimV1(transform, scenario.getNetwork());
-        reader.parse(networkFile);
+        reader.readFile(networkFile);
         /*
         Load attributes...
          */
